@@ -18,6 +18,7 @@ class Node:
         self.left_node = None
         self.right_node = None
 
+
 class SplayTree:
     def __init__(self):
         self.root = None
@@ -52,8 +53,8 @@ class SplayTree:
                 node = node.right_node
             else:
                 self._splay(node)
-                return node.value  # Return the value associated with the key
-        return None  # Якщо елемент не знайдено.
+                return node.value
+        return None
 
     def _splay(self, node):
         """Реалізація сплаювання для переміщення вузла до кореня."""
@@ -126,7 +127,7 @@ def fibonacci_splay(n, tree):
     if (result := tree.find(n)) is not None:
         return result
     result = fibonacci_splay(n - 1, tree) + fibonacci_splay(n - 2, tree)
-    tree.insert(n, result)  # Insert key-value pair (n, result)
+    tree.insert(n, result)
     return result
 
 
@@ -157,4 +158,3 @@ print(f"{'n':<10}{'LRU Cache Time (s)':<20}{'Splay Tree Time (s)':<20}")
 print("-" * 50)
 for n, lru_time, splay_time in zip(n_values, lru_times, splay_times):
     print(f"{n:<10}{lru_time:<20.8f}{splay_time:<20.8f}")
-
